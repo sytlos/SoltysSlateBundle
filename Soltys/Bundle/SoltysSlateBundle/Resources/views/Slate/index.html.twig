@@ -1,0 +1,123 @@
+{% if config.language_tabs is defined %}
+    {% set language_tabs = config.language_tabs %}
+{% else %}
+    {% set language_tabs = [] %}
+{% endif %}
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>
+            {% if config.title is defined %}
+                {{ config.title }}
+            {% else %}
+                API Documentation
+            {% endif %}
+        </title>
+
+        {% include ':doc:_css.html.twig' %}
+        {% stylesheets output="css/all.css" filter="sass"
+            "bundles/app/css/screen.css.scss"
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
+        {% endstylesheets %}
+        {% stylesheets output="css/all.css" filter="sass"
+            "bundles/app/css/print.css.scss"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" media="print" />
+        {% endstylesheets %}
+    </head>
+
+    {% set body_lang = '' %}
+    {% for lang in language_tabs %}
+        {% set coma = '' %}
+        {% if loop.index > 1 %}
+            {% set coma = ', ' %}
+        {% endif %}
+        {% set body_lang = body_lang ~ coma ~ '"' ~ lang ~ '"' %}
+    {% endfor %}
+
+    <body class="{{ config.page_classes }}" data-languages="[{{ body_lang }}]">
+        <a href="#" id="nav-button">
+              <span>
+                NAV
+                  <img src="{{ asset(config.navbar) }}">
+              </span>
+        </a>
+        <div class="toc-wrapper">
+            <img src="{{ asset(config.logo) }}" class="logo">
+            {% if language_tabs|length > 0 %}
+                <div class="lang-selector">
+                    {% for lang in language_tabs %}
+                        {#<% if lang.is_a? Hash %>#}
+                        {#<a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>#}
+                        {#<% else %>#}
+                        <a href="#" data-language-name="{{ lang }}">{{ lang }}</a>
+                        {#<% end %>#}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if config.with_search is defined %}
+                <div class="search">
+                    <input type="text" class="search" id="input-search" placeholder="Search">
+                </div>
+                <ul class="search-results"></ul>
+            {% endif %}
+            <div id="toc" class="toc-list-h1">
+                {% for h1 in toc_data(page_content) %}
+                    <li>
+                        <a href="#{{ h1.id }}" class="toc-h1 toc-link" data-title="{{ h1.content }}">{{ h1.content }}</a>
+                        {% if h1.children|length > 0 %}
+                            <ul class="toc-list-h2">
+                                {% for h2 in h1.children %}
+                                    <li>
+                                        <a href="#{{ h2.id }}" class="toc-h2 toc-link" data-title="{{ h2.content }}">{{ h2.content }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </div>
+            {% if config.toc_footers|length > 0 %}
+                {% for footer in config.toc_footers %}
+                    {% include footer %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="page-wrapper">
+            <div class="dark-box"></div>
+            <div class="content">
+                {{ page_content|markdown }}
+            </div>
+            <div class="dark-box">
+                {% if language_tabs|length > 0 %}
+                    <div class="lang-selector">
+                        {% for lang in language_tabs %}
+                            {#<% if lang.is_a? Hash %>#}
+                            {#<a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>#}
+                            {#<% else %>#}
+                            <a href="#" data-language-name="{{ lang }}">{{ lang }}</a>
+                            {#<% end %>#}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+
+    <script src="{{ asset('bundles/app/js/lib/_lunr.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/lib/_jquery.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/lib/_jquery.highlight.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/lib/_imagesloaded.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/lib/_energize.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/app/_toc.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/app/_lang.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/all_nosearch.js') }}"></script>
+    {% if config.with_search is defined %}
+        <script src="{{ asset('bundles/app/js/app/_search.js') }}"></script>
+    {% endif %}
+</html>

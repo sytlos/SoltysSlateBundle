@@ -1,0 +1,31 @@
+{
+  "name": "soltys/slate-bundle",
+  "type": "symfony-bundle",
+  "description": "This bundle provides a configurable Slate documentation for your REST APIs.",
+  "keywords": ["Symfony", "bundle", "slate", "api", "rest", "soltys"],
+  "homepage": "https://github.com/hugosoltys/SoltysSlateBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hugo Soltys",
+      "email": "hugo.soltys@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "symfony/framework-bundle": "~2.3|~3.0",
+    "symfony/console": "~2.3|~3.0",
+    "knplabs/knp-markdown-bundle": "^1.5",
+    "symfony/assetic-bundle": "^2.8",
+    "symfony/twig-bundle": "^2.7 || ^3.0"
+  },
+  "autoload": {
+    "psr-0": { "Soltys\\Bundle\\SoltysSlateBundle": "" }
+  },
+  "target-dir": "Soltys/Bundle/SoltysSlateBundle",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  }
+}
