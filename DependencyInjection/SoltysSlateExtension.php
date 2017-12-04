@@ -23,9 +23,13 @@ class SoltysSlateExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
-
-//        $container->setParameter('lexik_jwt_authentication.private_key_path', $config['private_key_path']);
+        $container->setParameter('soltys_slate.title', $config['title']);
+        $container->setParameter('soltys_slate.navbar_path', $config['navbar_path']);
+        $container->setParameter('soltys_slate.logo_path', $config['logo_path']);
+        $container->setParameter('soltys_slate.with_search', $config['with_search']);
+        $container->setParameter('soltys_slate.page_classes', $config['page_classes']);
+        $container->setParameter('soltys_slate.language_tabs', $config['language_tabs']);
+        $container->setParameter('soltys_slate.includes', $config['includes']);
+        $container->setParameter('soltys_slate.toc_footers', $config['toc_footers']);
     }
 }
