@@ -8,7 +8,7 @@ class SlateController extends Controller
 {
     public function indexAction()
     {
-        $pageContent = $this->renderView('doc/index.md.twig');
+        $pageContent = $this->renderView('SoltysSlateBundle:Slate/MarkDown:index.md.twig');
 
         $title = $this->getParameter('soltys_slate.title');
         $navbarPath = $this->getParameter('soltys_slate.navbar_path');
@@ -43,7 +43,7 @@ class SlateController extends Controller
             $pageContent .= $this->renderView($include);
         }
 
-        return $this->render('doc/index.html.twig', [
+        return $this->render('SoltysSlateBundle:Slate:index.html.twig', [
             'page_content' => $pageContent,
             'title' => $title,
             'navbarPath' => $navbarPath,
