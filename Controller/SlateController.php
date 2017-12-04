@@ -10,7 +10,16 @@ class SlateController extends Controller
     {
         $pageContent = $this->renderView('doc/index.md.twig');
 
-        $config = [
+        $title = $this->getParameter('soltys_slate.title');
+        $navbarPath = $this->getParameter('soltys_slate.navbar_path');
+        $logoPath = $this->getParameter('soltys_slate.logo_path');
+        $withSearch = $this->getParameter('soltys_slate.with_search');
+        $pageClasses = $this->getParameter('soltys_slate.page_classes');
+        $languageTabs = $this->getParameter('soltys_slate.language_tabs');
+        $includes = $this->getParameter('soltys_slate.includes');
+        $tocFooters = $this->getParameter('soltys_slate.toc_footers');
+
+        /*$config = [
             'title' => 'Slate Symfony Bundle',
             'navbar' => 'bundles/app/images/navbar.png',
             'logo' => 'bundles/app/images/logo.png',
@@ -28,19 +37,22 @@ class SlateController extends Controller
                 ':doc/footers:_footer.html.twig'
             ],
             'page_classes' => 'index'
-        ];
+        ];*/
 
-        foreach ($config as $key => $conf) {
-            if ($key == 'includes' && $conf) {
-                foreach ($conf as $include) {
-                    $pageContent .= $this->renderView($include);
-                }
-            }
+        foreach ($includes as $include) {
+            $pageContent .= $this->renderView($include);
         }
 
         return $this->render('doc/index.html.twig', [
             'page_content' => $pageContent,
-            'config' => $config
+            'title' => $title,
+            'navbarPath' => $navbarPath,
+            'logoPath' => $logoPath,
+            'withSearch' => $withSearch,
+            'pageClasses' => $pageClasses,
+            'languageTabs' => $languageTabs,
+            'includes' => $includes,
+            'tocFooters' => $tocFooters
         ]);
     }
 }

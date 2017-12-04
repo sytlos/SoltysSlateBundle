@@ -1,5 +1,5 @@
-{% if config.language_tabs is defined %}
-    {% set language_tabs = config.language_tabs %}
+{% if languageTabs is defined %}
+    {% set language_tabs = languageTabs %}
 {% else %}
     {% set language_tabs = [] %}
 {% endif %}
@@ -11,8 +11,8 @@
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>
-            {% if config.title is defined %}
-                {{ config.title }}
+            {% if title is defined %}
+                {{ title }}
             {% else %}
                 API Documentation
             {% endif %}
@@ -40,15 +40,15 @@
         {% set body_lang = body_lang ~ coma ~ '"' ~ lang ~ '"' %}
     {% endfor %}
 
-    <body class="{{ config.page_classes }}" data-languages="[{{ body_lang }}]">
+    <body class="{{ pageClasses }}" data-languages="[{{ body_lang }}]">
         <a href="#" id="nav-button">
               <span>
                 NAV
-                  <img src="{{ asset(config.navbar) }}">
+                  <img src="{{ asset(navbar) }}">
               </span>
         </a>
         <div class="toc-wrapper">
-            <img src="{{ asset(config.logo) }}" class="logo">
+            <img src="{{ asset(logoPath) }}" class="logo">
             {% if language_tabs|length > 0 %}
                 <div class="lang-selector">
                     {% for lang in language_tabs %}
@@ -60,7 +60,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
-            {% if config.with_search is defined %}
+            {% if withSearch is defined %}
                 <div class="search">
                     <input type="text" class="search" id="input-search" placeholder="Search">
                 </div>
@@ -82,8 +82,8 @@
                     </li>
                 {% endfor %}
             </div>
-            {% if config.toc_footers|length > 0 %}
-                {% for footer in config.toc_footers %}
+            {% if tocFooters|length > 0 %}
+                {% for footer in tocFooters %}
                     {% include footer %}
                 {% endfor %}
             {% endif %}
@@ -117,7 +117,7 @@
     <script src="{{ asset('bundles/app/js/app/_toc.js') }}"></script>
     <script src="{{ asset('bundles/app/js/app/_lang.js') }}"></script>
     <script src="{{ asset('bundles/app/js/all_nosearch.js') }}"></script>
-    {% if config.with_search is defined %}
+    {% if withSearch is defined %}
         <script src="{{ asset('bundles/app/js/app/_search.js') }}"></script>
     {% endif %}
 </html>
