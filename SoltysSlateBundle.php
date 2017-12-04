@@ -1,6 +1,6 @@
 <?php
 
-namespace Soltys\Bundle;
+namespace Soltys\Bundle\SoltysSlateBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
