@@ -2,4 +2,4 @@ services:
     symfony_slate.toc_data:
         class: Soltys\Bundle\SoltysSlateBundle\Twig\TocDataExtension
         tags: [twig.extension]
-        arguments: [@markdown.parser.sundown]
+        arguments: ["@markdown.parser.sundown"]
