@@ -18,14 +18,14 @@
             {% endif %}
         </title>
 
-        {% include ':doc:_css.html.twig' %}
+        {% include 'SoltysSlateBundle:Slate:_css.html.twig' %}
         {% stylesheets output="css/all.css" filter="sass"
-            "bundles/app/css/screen.css.scss"
+            "bundles/soltysslate/css/screen.css.scss"
         %}
             <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
         {% endstylesheets %}
         {% stylesheets output="css/all.css" filter="sass"
-            "bundles/app/css/print.css.scss"
+            "bundles/soltysslate/css/print.css.scss"
         %}
         <link rel="stylesheet" href="{{ asset_url }}" media="print" />
         {% endstylesheets %}
@@ -44,7 +44,7 @@
         <a href="#" id="nav-button">
               <span>
                 NAV
-                  <img src="{{ asset(navbar) }}">
+                  <img src="{{ asset(navbarPath) }}">
               </span>
         </a>
         <div class="toc-wrapper">
@@ -109,15 +109,15 @@
         </div>
     </body>
 
-    <script src="{{ asset('bundles/app/js/lib/_lunr.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/lib/_jquery.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/lib/_jquery.highlight.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/lib/_imagesloaded.min.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/lib/_energize.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/app/_toc.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/app/_lang.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/all_nosearch.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/lib/_lunr.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/lib/_jquery.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/lib/_jquery.highlight.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/lib/_imagesloaded.min.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/lib/_energize.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/app/_toc.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/app/_lang.js') }}"></script>
+    <script src="{{ asset('bundles/soltysslate/js/all_nosearch.js') }}"></script>
     {% if withSearch is defined %}
-        <script src="{{ asset('bundles/app/js/app/_search.js') }}"></script>
+        <script src="{{ asset('bundles/soltysslate/js/app/_search.js') }}"></script>
     {% endif %}
 </html>
