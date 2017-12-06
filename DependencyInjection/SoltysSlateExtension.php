@@ -3,7 +3,9 @@
 namespace Soltys\Bundle\SoltysSlateBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Config\FileLocator;
 
 /**
  * @author hugosoltys
@@ -28,5 +30,8 @@ class SoltysSlateExtension extends Extension
         $container->setParameter('soltys_slate.language_tabs', $config['language_tabs']);
         $container->setParameter('soltys_slate.includes', $config['includes']);
         $container->setParameter('soltys_slate.toc_footers', $config['toc_footers']);
+
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
     }
 }
