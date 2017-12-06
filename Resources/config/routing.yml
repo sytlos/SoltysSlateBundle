@@ -1,0 +1,4 @@
+soltys_slate_documentation:
+    path: /
+    defaults: { _controller: SoltysSlateBundle:Slate:index }
+    methods: [GET]
