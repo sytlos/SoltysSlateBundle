@@ -3,6 +3,7 @@
 namespace Soltys\Bundle\SoltysSlateBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +13,7 @@ use Symfony\Component\Config\FileLocator;
  *
  * This is the class that loads and manages your bundle configuration
  */
-class SoltysSlateExtension extends Extension
+class SoltysSlateExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * {@inheritDoc}
@@ -33,5 +34,41 @@ class SoltysSlateExtension extends Extension
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        $config = [
+            'parser' => [
+                'service' => 'markdown.parser.sundown'
+            ],
+            'sundown' => [
+                'extensions' => [
+                    'fenced_code_blocks' => true,
+                    'no_intra_emphasis' => true,
+                    'tables' => true,
+                    'autolink' => true,
+                    'strikethrough' => true,
+                    'lax_html_blocks' => true,
+                    'space_after_headers' => true,
+                    'superscript' => true
+                ],
+                'render_flags' => [
+                    'filter_html' => true,
+                    'no_images' => true,
+                    'no_links' => true,
+                    'no_styles' => true,
+                    'safe_links_only' => true,
+                    'with_toc_data' => true,
+                    'hard_wrap' => true,
+                    'xhtml' => true
+                ]
+            ]
+        ];
+
+        $container->prependExtensionConfig('knp_markdown', $config);
     }
 }

@@ -19,16 +19,11 @@
         </title>
 
         {% include 'SoltysSlateBundle:Slate:_css.html.twig' %}
-        {% stylesheets output="css/all.css" filter="sass"
-            "bundles/soltysslate/css/screen.css.scss"
-        %}
-            <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
-        {% endstylesheets %}
-        {% stylesheets output="css/all.css" filter="sass"
-            "bundles/soltysslate/css/print.css.scss"
-        %}
-        <link rel="stylesheet" href="{{ asset_url }}" media="print" />
-        {% endstylesheets %}
+
+        <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/_icon-font.css') }}" media="screen" />
+        <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/_normalize.css') }}" media="screen" />
+        <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/screen.css') }}" media="screen" />
+        <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/print.css') }}" media="print" />
     </head>
 
     {% set body_lang = '' %}

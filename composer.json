@@ -16,7 +16,6 @@
     "symfony/framework-bundle": "~2.3|~3.0",
     "symfony/console": "~2.3|~3.0",
     "knplabs/knp-markdown-bundle": "^1.5",
-    "symfony/assetic-bundle": "^2.8",
     "symfony/twig-bundle": "^2.7 || ^3.0"
   },
   "autoload": {
