@@ -26,26 +26,6 @@ class SlateController extends Controller
         $includes = $this->getParameter('soltys_slate.includes');
         $tocFooters = $this->getParameter('soltys_slate.toc_footers');
 
-        /*$config = [
-            'title' => 'Slate Symfony Bundle',
-            'navbar' => 'bundles/app/images/navbar.png',
-            'logo' => 'bundles/app/images/logo.png',
-            'includes' => [
-                ':doc/includes:_errors.md.twig'
-            ],
-            'language_tabs' => [
-                'shell',
-                'ruby',
-                'python',
-                'javascript'
-            ],
-            'with_search' => 1,
-            'toc_footers' => [
-                ':doc/footers:_footer.html.twig'
-            ],
-            'page_classes' => 'index'
-        ];*/
-
         foreach ($includes as $include) {
             $pageContent .= $this->renderView($include);
         }

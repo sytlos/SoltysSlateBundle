@@ -55,7 +55,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
-            {% if withSearch is defined %}
+            {% if withSearch is defined and withSearch %}
                 <div class="search">
                     <input type="text" class="search" id="input-search" placeholder="Search">
                 </div>
@@ -112,7 +112,7 @@
     <script src="{{ asset('bundles/soltysslate/js/app/_toc.js') }}"></script>
     <script src="{{ asset('bundles/soltysslate/js/app/_lang.js') }}"></script>
     <script src="{{ asset('bundles/soltysslate/js/all_nosearch.js') }}"></script>
-    {% if withSearch is defined %}
+    {% if withSearch is defined and withSearch %}
         <script src="{{ asset('bundles/soltysslate/js/app/_search.js') }}"></script>
     {% endif %}
 </html>
