@@ -51,7 +51,7 @@ Step 3: Configure the Bundle
 
 In your `routing.yml` file add the following lines:
 
-```
+```yaml
 # app/config/routing.yml
 SoltysSlateBundle:
     resource: "@SoltysSlateBundle/Resources/config/routing.yml"
@@ -59,7 +59,7 @@ SoltysSlateBundle:
 ```
 
 Then configure the bundle by adding the following in your `config.yml`:
-```
+```yaml
 # app/config/config.yml
 soltys_slate:
     title: ~        # Your documentation title
