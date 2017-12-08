@@ -5,6 +5,13 @@ namespace Soltys\Bundle\SoltysSlateBundle\Twig;
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
+/*
+ * This file is part of the SoltysSlateBundle.
+ *
+ * (c) Hugo Soltys <hugo.soltys@gmail.com>
+ *
+ * https://hugo-soltys.com
+ */
 class TocDataExtension extends \Twig_Extension
 {
     protected $mdParser;

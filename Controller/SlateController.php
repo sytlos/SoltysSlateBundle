@@ -4,6 +4,13 @@ namespace Soltys\Bundle\SoltysSlateBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/*
+ * This file is part of the SoltysSlateBundle.
+ *
+ * (c) Hugo Soltys <hugo.soltys@gmail.com>
+ *
+ * https://hugo-soltys.com
+ */
 class SlateController extends Controller
 {
     public function indexAction()

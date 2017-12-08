@@ -8,10 +8,12 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-/**
- * @author hugosoltys
+/*
+ * This file is part of the SoltysSlateBundle.
  *
- * This is the class that loads and manages your bundle configuration
+ * (c) Hugo Soltys <hugo.soltys@gmail.com>
+ *
+ * https://hugo-soltys.com
  */
 class SoltysSlateExtension extends Extension implements PrependExtensionInterface
 {

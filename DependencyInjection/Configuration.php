@@ -5,10 +5,12 @@ namespace Soltys\Bundle\SoltysSlateBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * @author hugosoltys
+/*
+ * This file is part of the SoltysSlateBundle.
  *
- * This is the class that validates and merges configuration from your app/config files
+ * (c) Hugo Soltys <hugo.soltys@gmail.com>
+ *
+ * https://hugo-soltys.com
  */
 class Configuration implements ConfigurationInterface
 {
