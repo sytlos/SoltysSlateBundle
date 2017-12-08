@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('bundles/soltysslate/images/navbar.png')
                 ->end()
                 ->scalarNode('logo_path')
-                    ->defaultValue('bundles/soltysslate/images/navbar.png')
+                    ->defaultValue('bundles/soltysslate/images/logo.png')
                 ->end()
                 ->scalarNode('with_search')
                     ->defaultValue(true)
