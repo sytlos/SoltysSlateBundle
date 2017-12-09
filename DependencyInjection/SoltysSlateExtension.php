@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Yaml\Yaml;
 
 /*
  * This file is part of the SoltysSlateBundle.
@@ -43,34 +44,8 @@ class SoltysSlateExtension extends Extension implements PrependExtensionInterfac
      */
     public function prepend(ContainerBuilder $container)
     {
-        $config = [
-            'parser' => [
-                'service' => 'markdown.parser.sundown'
-            ],
-            'sundown' => [
-                'extensions' => [
-                    'fenced_code_blocks' => true,
-                    'no_intra_emphasis' => true,
-                    'tables' => true,
-                    'autolink' => true,
-                    'strikethrough' => true,
-                    'lax_html_blocks' => true,
-                    'space_after_headers' => true,
-                    'superscript' => true
-                ],
-                'render_flags' => [
-                    'filter_html' => true,
-                    'no_images' => true,
-                    'no_links' => true,
-                    'no_styles' => true,
-                    'safe_links_only' => true,
-                    'with_toc_data' => true,
-                    'hard_wrap' => true,
-                    'xhtml' => true
-                ]
-            ]
-        ];
+        $knpConfig = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/knp_markdown.yml'));
 
-        $container->prependExtensionConfig('knp_markdown', $config);
+        $container->prependExtensionConfig('knp_markdown', $knpConfig);
     }
 }
