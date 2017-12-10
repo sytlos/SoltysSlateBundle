@@ -67,7 +67,7 @@ soltys_slate:
     logo_path: ~    # Your logo path
     with_search: ~  # Enable/Disable the search bar
     page_classes: ~ # Add this CSS class to the HTML <body> tag
-    language_tabs: ["shell", "ruby"] # List the languages in which you want to write your examples
+    language_tabs: ["shell", "ruby", "python", "javascript"] # List the languages in which you want to write your examples
     includes: ["SoltysSlateBundle:Slate/Includes:_errors.md.twig"] # Additional templates
     toc_footers: ["SoltysSlateBundle:Slate/Footers:_footer.html.twig"] # Footer template
 ```

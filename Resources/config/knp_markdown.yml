@@ -10,3 +10,12 @@ sundown:
         lax_html_blocks: true
         space_after_headers: true
         superscript: true
+    render_flags:
+        filter_html:          false
+        no_images:            false
+        no_links:             false
+        no_styles:            false
+        safe_links_only:      false
+        with_toc_data:        true
+        hard_wrap:            false
+        xhtml:                false
