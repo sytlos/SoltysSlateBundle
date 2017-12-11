@@ -3,12 +3,6 @@ SoltysSlateBundle
 
 This bundle provides a configurable [Slate](https://github.com/lord/slate) documentation for your REST APIs.
 
-Step 0: Bundle Requirements
----------------------------
-
-Before downloading this bundle, please notice that the KnpMarkdownBundle requires
-you to install the [Sundown PHP extension](https://github.com/chobie/php-sundown).
-
 Step 1: Download the Bundle
 ---------------------------
 
@@ -35,7 +29,6 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...
-            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Soltys\Bundle\SoltysSlateBundle\SoltysSlateBundle(),
         );
 

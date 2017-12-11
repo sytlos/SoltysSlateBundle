@@ -86,7 +86,7 @@
         <div class="page-wrapper">
             <div class="dark-box"></div>
             <div class="content">
-                {{ page_content|markdown }}
+                {{ markdown(page_content)|raw }}
             </div>
             <div class="dark-box">
                 {% if language_tabs|length > 0 %}

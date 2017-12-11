@@ -2,7 +2,7 @@
 
 namespace Soltys\Bundle\SoltysSlateBundle\Twig;
 
-use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
+use Parsedown;
 use Symfony\Component\DomCrawler\Crawler;
 
 /*
@@ -14,13 +14,6 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class TocDataExtension extends \Twig_Extension
 {
-    protected $mdParser;
-
-    public function __construct(MarkdownParserInterface $parser)
-    {
-        $this->mdParser = $parser;
-    }
-
     public function getFunctions()
     {
         return [
@@ -30,7 +23,8 @@ class TocDataExtension extends \Twig_Extension
 
     public function tocDataFilter($pageContent)
     {
-        $md = $this->mdParser->transformMarkdown($pageContent);
+        $parser = new Parsedown();
+        $md = $parser->text($pageContent);
         $crawler = new Crawler($md);
 
         $titles = $crawler->filter('h1,h2,h3');

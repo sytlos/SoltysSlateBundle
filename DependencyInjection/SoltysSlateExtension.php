@@ -16,7 +16,7 @@ use Symfony\Component\Yaml\Yaml;
  *
  * https://hugo-soltys.com
  */
-class SoltysSlateExtension extends Extension implements PrependExtensionInterface
+class SoltysSlateExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -37,15 +37,5 @@ class SoltysSlateExtension extends Extension implements PrependExtensionInterfac
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-    }
-
-    /**
-     * @param ContainerBuilder $container
-     */
-    public function prepend(ContainerBuilder $container)
-    {
-        $knpConfig = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/knp_markdown.yml'));
-
-        $container->prependExtensionConfig('knp_markdown', $knpConfig);
     }
 }
