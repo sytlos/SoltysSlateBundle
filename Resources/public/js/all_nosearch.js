@@ -6,6 +6,7 @@ $(function() {
     setNavigationIds();
     loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
     setCodeClass();
+    hljs.initHighlightingOnLoad();
     setupLanguages($('body').data('languages'));
     $('.content').imagesLoaded( function() {
         window.recacheHeights();
@@ -19,19 +20,22 @@ window.onpopstate = function() {
 
 function setCodeClass() {
     var codeBlocks = $('code');
-    var containers = codeBlocks.parent('pre');
 
-    containers.each(function () {
-        $(this).addClass('highlight');
+    codeBlocks.each(function () {
+        var container = $(this).parent('pre');
+        container.addClass('highlight');
 
-        var className = $(this).find('code').attr('class');
-        var languageName = className.replace('language-', '');
-        var authorizedLanguages = $('body').data('languages');
+        var codeBlock = $(this);
+        var className = codeBlock.attr('class');
+        if (typeof className !== 'undefined' && className.indexOf('language-') !== -1) {
+            var languageName = className.replace('language-', '');
+            var authorizedLanguages = $('body').data('languages');
 
-        if($.inArray(languageName, authorizedLanguages) !== -1) {
-            $(this).addClass(languageName);
-            $(this).addClass('tab-' + languageName);
-            $(this).find('code').removeClass(languageName);
+            if($.inArray(languageName, authorizedLanguages) !== -1) {
+                container.addClass('tab-' + languageName);
+                codeBlock.addClass(languageName);
+                codeBlock.removeClass(className);
+            }
         }
     });
 }
