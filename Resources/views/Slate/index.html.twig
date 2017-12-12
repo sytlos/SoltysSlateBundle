@@ -18,8 +18,7 @@
         {% endif %}
     </title>
 
-    {% include 'SoltysSlateBundle:Slate:_css.html.twig' %}
-
+    <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/highlight.min.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/_icon-font.min.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/_normalize.min.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('bundles/soltysslate/css/screen.min.css') }}" media="screen" />
@@ -48,11 +47,7 @@
     {% if language_tabs|length > 0 %}
         <div class="lang-selector">
             {% for lang in language_tabs %}
-                {#<% if lang.is_a? Hash %>#}
-                {#<a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>#}
-                {#<% else %>#}
                 <a href="#" data-language-name="{{ lang }}">{{ lang }}</a>
-                {#<% end %>#}
             {% endfor %}
         </div>
     {% endif %}
@@ -93,11 +88,7 @@
         {% if language_tabs|length > 0 %}
             <div class="lang-selector">
                 {% for lang in language_tabs %}
-                    {#<% if lang.is_a? Hash %>#}
-                    {#<a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>#}
-                    {#<% else %>#}
                     <a href="#" data-language-name="{{ lang }}">{{ lang }}</a>
-                    {#<% end %>#}
                 {% endfor %}
             </div>
         {% endif %}
