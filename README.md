@@ -55,14 +55,35 @@ Then configure the bundle by adding the following in your `config.yml`:
 ```yaml
 # app/config/config.yml
 soltys_slate:
-    title: ~        # Your documentation title
-    navbar_path: ~  # Your navbar image path
-    logo_path: ~    # Your logo path
-    with_search: ~  # Enable/Disable the search bar
-    page_classes: ~ # Add this CSS class to the HTML <body> tag
+    language_tabs: ["shell", "ruby", "python", "javascript"]
+    includes: ["SoltysSlateBundle:Slate/Includes:_errors.md.twig"]
+    toc_footers: ["SoltysSlateBundle:Slate/Footers:_footer.html.twig"]
+```
+
+The full bundle configuration reference is below:
+```yaml
+# app/config/config.yml
+soltys_slate:
+    title: "API Documentation"                            # Your documentation title
+    navbar_path: "bundles/soltysslate/images/navbar.png"  # Your navbar image path
+    logo_path: "bundles/soltysslate/images/logo.png"      # Your logo path
+    with_search: true                                     # Enable/Disable the search bar
+    page_classes: "index"                                 # Add this CSS class to the HTML <body> tag
     language_tabs: ["shell", "ruby", "python", "javascript"] # List the languages in which you want to write your examples
     includes: ["SoltysSlateBundle:Slate/Includes:_errors.md.twig"] # Additional templates
     toc_footers: ["SoltysSlateBundle:Slate/Footers:_footer.html.twig"] # Footer template
+```
+
+
+You can now install your assets with the following command:
+
+```console
+$ bin/console assets:install web --symlink
+```
+
+Then clear your cache:
+```console
+$ bin/console cache:clear
 ```
 
 Step 4: Usage

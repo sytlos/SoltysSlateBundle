@@ -2,7 +2,6 @@
 
 namespace Soltys\Bundle\SoltysSlateBundle\Twig;
 
-use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 use Parsedown;
 use Symfony\Component\DomCrawler\Crawler;
 
