@@ -3,9 +3,10 @@
 namespace Soltys\Bundle\SoltysSlateBundle\Test;
 
 use Soltys\Bundle\SoltysSlateBundle\DependencyInjection\SoltysSlateExtension;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class SoltysSlateExtensionTest extends \PHPUnit_Framework_TestCase
+class SoltysSlateExtensionTest extends WebTestCase
 {
     public function testInvalidTitleThrowsException()
     {
